@@ -1,0 +1,40 @@
+{
+  "goods": [
+    {
+      "id": 1,
+      "model": "samsung",
+      "release_date": "2022-12-12",
+      "category": "phone",
+      "retail_price": "123231",
+      "created_date": "2022-11-11",
+      "is_visible": "true"
+    },
+    {
+      "id": 2,
+      "model": "apple",
+      "release_date": "2022-12-12",
+      "category": "phone",
+      "retail_price": "123231",
+      "created_date": "2022-11-11",
+      "is_visible": "true"
+    },
+    {
+      "id": 3,
+      "model": "google",
+      "release_date": "2022-12-12",
+      "category": "phone",
+      "retail_price": "123231",
+      "created_date": "2022-11-11",
+      "is_visible": "true"
+    },
+    {
+      "id": 4,
+      "model": "shohrux",
+      "release_date": "2022-12-12",
+      "category": "phone",
+      "retail_price": "123231",
+      "created_date": "2022-11-11",
+      "is_visible": "true"
+    }
+  ]
+}
