@@ -59,7 +59,7 @@
     category: null,
     retailPrice: null,
     description: null,
-    isVisible: null,
+    isVisible: false,
   });
   const categoryOptions = [
     {

@@ -29,6 +29,24 @@
           <el-checkbox v-model="row.is_visible" @change="updateGoodVisibility(row.id, row)"></el-checkbox>
         </template>
       </el-table-column>
+      <el-table-column>
+        <template #default="{ row }">
+          <el-button type="primary" :icon="Edit" circle />
+          <el-popconfirm
+            title="Вы уверены удалить это?"
+            width="220"
+            confirm-button-text="Да"
+            cancel-button-text="Нет"
+            :icon="InfoFilled"
+            icon-color="#626AEF"
+            @confirm="deleteGood(row.id).then(() => fetchGoods())"
+          >
+            <template #reference>
+              <el-button type="danger" :icon="Delete" circle />
+            </template>
+          </el-popconfirm>
+        </template>
+      </el-table-column>
     </el-table>
     <div class="table_pagination">
       <el-pagination
@@ -45,7 +63,8 @@
 <script setup lang="ts">
   import { ref, watch } from 'vue';
   import { debounce } from 'lodash-es';
-  import { getGoodsList, updateGood } from '../services/goods';
+  import { getGoodsList, updateGood, deleteGood } from '../services/goods';
+  import { Delete, Edit, InfoFilled } from '@element-plus/icons-vue';
 
   const goodsData = ref([]);
   const currentPage = ref(1);

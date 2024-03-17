@@ -1,174 +1,24 @@
 {
   "goods": [
     {
-      "id": 1,
+      "id": "1",
       "model": "123123",
       "category": "iphone",
       "retail_price": "123",
       "release_date": "2024-03-05",
       "description": "123",
       "created_date": "2024-03-16",
-      "is_visible": true
+      "is_visible": false
     },
     {
-      "id": 2,
+      "id": "2",
       "model": "123123",
       "category": "iphone",
       "retail_price": "123",
       "release_date": "2024-03-05",
       "description": "123",
       "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 3,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 4,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 5,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 6,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 7,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 8,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 9,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 10,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 11,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 12,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 13,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 14,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 15,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": null
-    },
-    {
-      "id": 16,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": true
-    },
-    {
-      "id": 17,
-      "model": "123123",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
-      "is_visible": true
+      "is_visible": false
     }
   ]
 }

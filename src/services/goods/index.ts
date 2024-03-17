@@ -10,3 +10,7 @@ export const updateGood = (id, payload) => {
 export const createGood = payload => {
   return MainConnect.post('/goods', payload);
 };
+
+export const deleteGood = id => {
+  return MainConnect.delete(`/goods/${id}`);
+};
