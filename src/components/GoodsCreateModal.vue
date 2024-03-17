@@ -64,7 +64,7 @@
   const emit = defineEmits<EmitTypes>();
   interface Props {
     modelValue: boolean;
-    editData?: { [key: string]: unknown } | null;
+    editData?: { [key: string]: any } | null;
     mode: string;
   }
 
