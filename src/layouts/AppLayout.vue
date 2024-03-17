@@ -18,11 +18,11 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import GoodsCreateModal from '../components/GoodsCreateModal.vue';
-  import { getGoodsList } from '../services/goods';
+  import GoodsCreateModal from '~/components/GoodsCreateModal.vue';
+  import { getGoodsList } from '~/services/goods';
 
-  const isModalOpen = ref(false);
-  const openModal = () => {
+  const isModalOpen = ref<boolean>(false);
+  const openModal = (): void => {
     isModalOpen.value = true;
   };
 </script>

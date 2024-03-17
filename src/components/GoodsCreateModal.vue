@@ -51,27 +51,24 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive, watch, ref } from 'vue';
-  import { createGood, updateGood } from '../services/goods';
+  import { watch, ref } from 'vue';
+  import { createGood, updateGood } from '~/services/goods';
   import { formatDate } from 'date-fns';
   import { useForm, useField } from 'vee-validate';
   import * as yup from 'yup';
+  import { GoodEntity } from '@/types/types.ts';
 
-  const emit = defineEmits(['update:model-value']);
+  type EmitTypes = {
+    (event: 'update:model-value', value: boolean): void;
+  };
+  const emit = defineEmits<EmitTypes>();
+  interface Props {
+    modelValue: boolean;
+    editData?: { [key: string]: unknown } | null;
+    mode: string;
+  }
 
-  const props = defineProps({
-    modelValue: {
-      type: Boolean,
-      required: true,
-    },
-    editData: {
-      type: Object,
-    },
-    mode: {
-      type: String,
-      required: true,
-    },
-  });
+  const props = defineProps<Props>();
 
   const categoryOptions = [
     {
@@ -96,8 +93,8 @@
   });
 
   const onSubmit = handleSubmit(values => {
-    const { model, realizeDate, category, retailPrice, description, isVisible, fileList } = values;
-    const params = {
+    const { model, realizeDate, category, retailPrice, description, isVisible } = values;
+    const params: GoodEntity = {
       model: model,
       category: category,
       retail_price: retailPrice,
@@ -105,7 +102,6 @@
       description: description,
       created_date: formatDate(new Date(), 'yyyy-MM-dd'),
       is_visible: isVisible,
-      file_list: fileList,
     };
     createGood(params).then(() => {
       emit('update:model-value', false);
@@ -118,9 +114,9 @@
   });
 
   const update = handleSubmit(values => {
-    const { model, realizeDate, category, retailPrice, description, isVisible, fileList } = values;
+    const { model, realizeDate, category, retailPrice, description, isVisible } = values;
 
-    const payload = {
+    const payload: GoodEntity = {
       model: model,
       category: category,
       retail_price: retailPrice,
@@ -128,7 +124,6 @@
       description: description,
       created_date: formatDate(new Date(), 'yyyy-MM-dd'),
       is_visible: isVisible,
-      file_list: fileList,
     };
 
     updateGood(goodId.value, payload).then(() => {

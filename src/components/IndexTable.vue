@@ -58,23 +58,26 @@
 <script setup lang="ts">
   import { onMounted, reactive, ref, watch } from 'vue';
   import { debounce } from 'lodash-es';
-  import { getGoodsList, updateGood, deleteGood } from '../services/goods';
+  import { getGoodsList, updateGood, deleteGood } from '~/services/goods';
   import { Delete, Edit, InfoFilled } from '@element-plus/icons-vue';
   import GoodsCreateModal from './GoodsCreateModal.vue';
-
+  interface Modal {
+    isOpen: boolean;
+    data: object;
+  }
   const goodsData = ref([]);
-  const currentPage = ref(1);
-  const totalItems = ref(0);
-  const filterModel = ref('');
-  const filterCategory = ref('');
-  const modal = reactive({
+  const currentPage = ref<number | string>(1);
+  const totalItems = ref<number | string>(0);
+  const filterModel = ref<string>('');
+  const filterCategory = ref<string>('');
+  const modal: Modal = reactive({
     isOpen: false,
     data: null,
   });
-  const categories = ref([
+  const categories = [
     { value: 'iphone', label: 'iphone' },
     { value: 'samsung', label: 'samsung' },
-  ]);
+  ];
 
   const fetchGoods = () => {
     getGoodsList(currentPage.value, filterModel.value, filterCategory.value).then(res => {
@@ -82,7 +85,7 @@
       totalItems.value = res.data.items;
     });
   };
-  const removeGood = id => {
+  const removeGood = (id: string | number) => {
     deleteGood(id).then(() => {
       fetchGoods();
       ElMessage({
@@ -92,12 +95,12 @@
       });
     });
   };
-  const handlePageChange = newPage => {
+  const handlePageChange = (newPage: number | string) => {
     currentPage.value = newPage;
     fetchGoods();
   };
   const handleFilterChange = () => {
-    currentPage.value = 1; // Reset to first page on filter change
+    currentPage.value = 1;
     debouncedGetGoods();
   };
 
@@ -108,11 +111,11 @@
     debouncedGetGoods();
   });
 
-  const updateGoodVisibility = (id, payload) => {
+  const updateGoodVisibility = (id: string | number, payload: object) => {
     updateGood(id, payload);
   };
 
-  const openEditModal = val => {
+  const openEditModal = (val: object) => {
     modal.isOpen = true;
     modal.data = val;
   };

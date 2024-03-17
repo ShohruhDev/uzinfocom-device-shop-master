@@ -1,44 +1,24 @@
 {
   "goods": [
     {
-      "model": "shohrux1231231232",
-      "category": "iphone",
-      "retail_price": "123",
-      "release_date": "2024-03-27",
-      "description": "432",
-      "created_date": "2024-03-18",
-      "is_visible": false,
-      "id": "c5f8"
-    },
-    {
-      "model": "shohrux123123321",
-      "category": "samsung",
-      "retail_price": "123",
-      "release_date": "2024-03-27",
-      "description": "432233",
-      "created_date": "2024-03-18",
-      "is_visible": false,
-      "id": "41cb"
-    },
-    {
-      "id": "cc8f",
       "model": "123",
       "category": "iphone",
-      "retail_price": null,
+      "retail_price": "123213",
       "release_date": "2024-03-11",
-      "description": null,
-      "created_date": "2024-03-17",
-      "is_visible": false
+      "description": "123213123",
+      "created_date": "2024-03-18",
+      "is_visible": false,
+      "id": "cc8f"
     },
     {
-      "id": "d369",
-      "model": null,
+      "model": "sjjds",
       "category": "samsung",
       "retail_price": "213",
       "release_date": "2024-03-18",
       "description": "123",
-      "created_date": "2024-03-17",
-      "is_visible": false
+      "created_date": "2024-03-18",
+      "is_visible": true,
+      "id": "d369"
     },
     {
       "id": "40b2",
@@ -48,7 +28,7 @@
       "release_date": "2024-03-18",
       "description": "123",
       "created_date": "2024-03-17",
-      "is_visible": false
+      "is_visible": true
     },
     {
       "id": "fadf",
@@ -58,17 +38,17 @@
       "release_date": "2024-03-18",
       "description": "123",
       "created_date": "2024-03-17",
-      "is_visible": false
+      "is_visible": true
     },
     {
-      "id": "d172",
-      "model": null,
-      "category": null,
-      "retail_price": null,
+      "model": "123123",
+      "category": "iphone",
+      "retail_price": "123",
       "release_date": "2024-02-29",
-      "description": null,
-      "created_date": "2024-03-17",
-      "is_visible": false
+      "description": "123",
+      "created_date": "2024-03-18",
+      "is_visible": true,
+      "id": "d172"
     },
     {
       "id": "36ab",
@@ -77,7 +57,8 @@
       "retail_price": "123",
       "release_date": "2024-03-19",
       "description": "123",
-      "created_date": "2024-03-18"
+      "created_date": "2024-03-18",
+      "is_visible": true
     },
     {
       "id": "ef6d",
