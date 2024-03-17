@@ -115,7 +115,6 @@
   const openEditModal = val => {
     modal.isOpen = true;
     modal.data = val;
-    console.log(val);
   };
 
   onMounted(() => {

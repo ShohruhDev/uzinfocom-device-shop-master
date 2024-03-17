@@ -1,24 +1,24 @@
 {
   "goods": [
     {
-      "id": "c5f8",
-      "model": "shohrux",
+      "model": "shohrux1231231232",
       "category": "iphone",
       "retail_price": "123",
       "release_date": "2024-03-27",
       "description": "432",
-      "created_date": "2024-03-17",
-      "is_visible": false
+      "created_date": "2024-03-18",
+      "is_visible": false,
+      "id": "c5f8"
     },
     {
-      "id": "41cb",
-      "model": "shohrux123",
+      "model": "shohrux123123321",
       "category": "samsung",
       "retail_price": "123",
       "release_date": "2024-03-27",
       "description": "432233",
-      "created_date": "2024-03-17",
-      "is_visible": false
+      "created_date": "2024-03-18",
+      "is_visible": false,
+      "id": "41cb"
     },
     {
       "id": "cc8f",
@@ -59,6 +59,155 @@
       "description": "123",
       "created_date": "2024-03-17",
       "is_visible": false
+    },
+    {
+      "id": "d172",
+      "model": null,
+      "category": null,
+      "retail_price": null,
+      "release_date": "2024-02-29",
+      "description": null,
+      "created_date": "2024-03-17",
+      "is_visible": false
+    },
+    {
+      "id": "36ab",
+      "model": "123213",
+      "category": "pixel",
+      "retail_price": "123",
+      "release_date": "2024-03-19",
+      "description": "123",
+      "created_date": "2024-03-18"
+    },
+    {
+      "id": "ef6d",
+      "model": "shohrux",
+      "category": "iphone",
+      "retail_price": "123",
+      "release_date": "2024-03-27",
+      "description": "432",
+      "created_date": "2024-03-18",
+      "is_visible": true
+    },
+    {
+      "id": "a380",
+      "model": "ыыы",
+      "category": "samsung",
+      "retail_price": "213",
+      "release_date": "2024-03-18",
+      "description": "123",
+      "created_date": "2024-03-18",
+      "is_visible": false
+    },
+    {
+      "id": "4de3",
+      "model": "йцу",
+      "category": "samsung",
+      "retail_price": "йцу",
+      "release_date": "2024-02-29",
+      "description": "фыв",
+      "created_date": "2024-03-18",
+      "is_visible": false
+    },
+    {
+      "id": "0943",
+      "model": "ыыы",
+      "category": "samsung",
+      "retail_price": "213",
+      "release_date": "2024-03-18",
+      "description": "123",
+      "created_date": "2024-03-18",
+      "is_visible": false
+    },
+    {
+      "id": "5d15",
+      "model": "shohrux123",
+      "category": "samsung",
+      "retail_price": "123",
+      "release_date": "2024-03-27",
+      "description": "432233",
+      "created_date": "2024-03-18",
+      "is_visible": false
+    },
+    {
+      "id": "5355",
+      "model": "shohrux123",
+      "category": "samsung",
+      "retail_price": "123",
+      "release_date": "2024-03-27",
+      "description": "432233",
+      "created_date": "2024-03-18",
+      "is_visible": false
+    },
+    {
+      "id": "d299",
+      "model": "123213",
+      "category": "pixel",
+      "retail_price": "123",
+      "release_date": "2024-03-19",
+      "description": "123",
+      "created_date": "2024-03-18",
+      "is_visible": false
+    },
+    {
+      "id": "821c",
+      "model": "123213",
+      "category": "pixel",
+      "retail_price": "123",
+      "release_date": "2024-03-19",
+      "description": "123",
+      "created_date": "2024-03-18",
+      "is_visible": false
+    },
+    {
+      "id": "c6fd",
+      "model": "ыыы",
+      "category": "samsung",
+      "retail_price": "213",
+      "release_date": "2024-03-18",
+      "description": "123",
+      "created_date": "2024-03-18",
+      "is_visible": false
+    },
+    {
+      "id": "c5fd",
+      "model": "shohrux123",
+      "category": "samsung",
+      "retail_price": "123",
+      "release_date": "2024-03-27",
+      "description": "432233",
+      "created_date": "2024-03-18",
+      "is_visible": false
+    },
+    {
+      "id": "d8cc",
+      "model": "shohrux123",
+      "category": "samsung",
+      "retail_price": "123",
+      "release_date": "2024-03-27",
+      "description": "432233",
+      "created_date": "2024-03-18",
+      "is_visible": false
+    },
+    {
+      "id": "07e0",
+      "model": "shohrux123",
+      "category": "samsung",
+      "retail_price": "123",
+      "release_date": "2024-03-27",
+      "description": "432233",
+      "created_date": "2024-03-18",
+      "is_visible": false
+    },
+    {
+      "id": "53a5",
+      "model": "shohruxjjjjjjj123124324324324dsfds",
+      "category": "iphone",
+      "retail_price": "123",
+      "release_date": "2024-03-11",
+      "description": "sadfd",
+      "created_date": "2024-03-18",
+      "is_visible": true
     }
   ]
 }

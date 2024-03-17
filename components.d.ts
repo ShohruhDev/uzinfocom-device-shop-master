@@ -28,6 +28,7 @@ declare module 'vue' {
     ElTableRow: typeof import('element-plus/es')['ElTableRow']
     ElUpload: typeof import('element-plus/es')['ElUpload']
     GoodsCreateModal: typeof import('./src/components/GoodsCreateModal.vue')['default']
+    GoodsCreateModal1: typeof import('./src/components/GoodsCreateModal1.vue')['default']
     IndexTable: typeof import('./src/components/IndexTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

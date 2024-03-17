@@ -6,15 +6,25 @@
     title="Создать товар"
     align-center
   >
-    <el-form :model="formData" labelPosition="top">
-      <el-form-item label="Модель">
-        <el-input v-model="formData.model" />
+    <el-form labelPosition="top">
+      <el-form-item label="Модель" :error="errors.model">
+        <el-input v-model="model" />
       </el-form-item>
-      <el-form-item label="Дата релиза">
-        <el-date-picker v-model="formData.realizeDate" />
-      </el-form-item>
-      <el-form-item label="Категория">
-        <el-select v-model="formData.category" placeholder="Please select a zone">
+      <div class="form-item">
+        <el-form-item label="Дата релиза" :error="errors.releaseDate">
+          <el-date-picker v-model="releaseDate" />
+        </el-form-item>
+        <el-form-item
+          class="form-item__checkbox"
+          labelPosition="left"
+          v-if="mode === 'create'"
+          label="Видимость товара"
+        >
+          <el-checkbox v-model="isVisible">Сделать активным</el-checkbox>
+        </el-form-item>
+      </div>
+      <el-form-item label="Категория" :error="errors.category">
+        <el-select v-model="category" placeholder="Выберите категорию">
           <el-option
             v-for="option in categoryOptions"
             :key="option.value"
@@ -23,22 +33,18 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="Розничная цена">
-        <el-input v-model="formData.retailPrice" />
+      <el-form-item label="Розничная цена" :error="errors.retailPrice">
+        <el-input v-model="retailPrice" />
       </el-form-item>
-      <el-form-item label="Описание товара">
-        <el-input type="textarea" v-model="formData.description" />
+      <el-form-item label="Описание товара" :error="errors.description">
+        <el-input type="textarea" v-model="description" />
       </el-form-item>
-      <div class="form-item">
-        <el-form-item label="Видимость товара">
-          <el-checkbox v-model="formData.isVisible" />
-        </el-form-item>
-      </div>
     </el-form>
     <template #footer>
       <div class="">
         <el-button @click="emit('update:model-value', false)">Отмена</el-button>
-        <el-button type="primary" @click="create()"> {{ isEditMode ? 'Изменить' : 'Создать' }} </el-button>
+        <el-button v-if="mode === 'create'" create type="primary" @click="onSubmit">Создать </el-button>
+        <el-button v-else type="primary" @click="update"> Изменить </el-button>
       </div>
     </template>
   </el-dialog>
@@ -48,6 +54,9 @@
   import { reactive, watch, ref } from 'vue';
   import { createGood, updateGood } from '../services/goods';
   import { formatDate } from 'date-fns';
+  import { useForm, useField } from 'vee-validate';
+  import * as yup from 'yup';
+
   const emit = defineEmits(['update:model-value']);
 
   const props = defineProps({
@@ -63,14 +72,7 @@
       required: true,
     },
   });
-  let formData = reactive({
-    model: null,
-    realizeDate: null,
-    category: null,
-    retailPrice: null,
-    description: null,
-    isVisible: false,
-  });
+
   const categoryOptions = [
     {
       label: 'samsung',
@@ -80,58 +82,93 @@
       label: 'iphone',
       value: 'iphone',
     },
-    {
-      label: 'pixel',
-      value: 'pixel',
-    },
   ];
-  const create = () => {
-    if (props.mode === 'edit') {
-      updateGood(formData?.id, formData).then(() => {
-        emit('update:model-value', false);
-        ElMessage({
-          showClose: true,
-          message: 'Товар успешно обновлен',
-          type: 'success',
-        });
+
+  const { errors, handleSubmit } = useForm({
+    validationSchema: yup.object({
+      model: yup.string().required(),
+      realizeDate: yup.date().required(),
+      category: yup.string().required(),
+      retailPrice: yup.string().required(),
+      description: yup.string().required(),
+      isVisible: yup.boolean(),
+    }),
+  });
+
+  const onSubmit = handleSubmit(values => {
+    const { model, realizeDate, category, retailPrice, description, isVisible, fileList } = values;
+    const params = {
+      model: model,
+      category: category,
+      retail_price: retailPrice,
+      release_date: formatDate(realizeDate, 'yyyy-MM-dd'),
+      description: description,
+      created_date: formatDate(new Date(), 'yyyy-MM-dd'),
+      is_visible: isVisible,
+      file_list: fileList,
+    };
+    createGood(params).then(() => {
+      emit('update:model-value', false);
+      ElMessage({
+        showClose: true,
+        message: 'Товар успешно создан',
+        type: 'success',
       });
-    } else {
-      const { model, realizeDate, category, retailPrice, description, isVisible, fileList } = formData;
-      const params = {
-        model: model,
-        category: category,
-        retail_price: retailPrice,
-        release_date: formatDate(realizeDate, 'yyyy-MM-dd'),
-        description: description,
-        created_date: formatDate(new Date(), 'yyyy-MM-dd'),
-        is_visible: isVisible,
-        file_list: fileList,
-      };
-      createGood(params).then(() => {
-        emit('update:model-value', false);
-        ElMessage({
-          showClose: true,
-          message: 'Товар успешно создан',
-          type: 'success',
-        });
+    });
+  });
+
+  const update = handleSubmit(values => {
+    const { model, realizeDate, category, retailPrice, description, isVisible, fileList } = values;
+
+    const payload = {
+      model: model,
+      category: category,
+      retail_price: retailPrice,
+      release_date: formatDate(realizeDate, 'yyyy-MM-dd'),
+      description: description,
+      created_date: formatDate(new Date(), 'yyyy-MM-dd'),
+      is_visible: isVisible,
+      file_list: fileList,
+    };
+
+    updateGood(goodId.value, payload).then(() => {
+      emit('update:model-value', false);
+      ElMessage({
+        showClose: true,
+        message: 'Товар успешно обновлен',
+        type: 'success',
       });
-    }
-  };
-  const isEditMode = ref(false);
+    });
+  });
+  const { value: model, setValue: setModel } = useField('model');
+  const { value: releaseDate, setValue: setReleaseDate } = useField('realizeDate');
+  const { value: category, setValue: setCategory } = useField('category');
+  const { value: retailPrice, setValue: setRetailPrice } = useField('retailPrice');
+  const { value: description, setValue: setDescription } = useField('description');
+  const { value: isVisible, setValue: setIsVisible } = useField('isVisible');
+  const goodId = ref(null);
   watch(
     () => props.editData,
-    () => {
-      if (props.mode === 'edit') {
-        formData = props.editData;
-        isEditMode.value = true;
+    newVal => {
+      if (props.mode === 'edit' && newVal) {
+        setModel(newVal.model || '');
+        setReleaseDate(newVal.release_date || '');
+        setCategory(newVal.category || '');
+        setRetailPrice(newVal.retail_price || '');
+        setDescription(newVal.description || '');
+        setIsVisible(newVal.isVisible || false);
+        goodId.value = newVal.id;
       }
-    }
+    },
+    { immediate: true }
   );
 </script>
 
 <style lang="scss" scoped>
   .form-item {
     display: flex;
-    justify-content: center;
+    &__checkbox {
+      margin-left: 40px;
+    }
   }
 </style>
