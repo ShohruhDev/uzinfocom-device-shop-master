@@ -1,23 +1,63 @@
 {
   "goods": [
     {
-      "id": "1",
-      "model": "123123",
+      "id": "c5f8",
+      "model": "shohrux",
       "category": "iphone",
       "retail_price": "123",
-      "release_date": "2024-03-05",
-      "description": "123",
-      "created_date": "2024-03-16",
+      "release_date": "2024-03-27",
+      "description": "432",
+      "created_date": "2024-03-17",
       "is_visible": false
     },
     {
-      "id": "2",
-      "model": "123123",
-      "category": "iphone",
+      "id": "41cb",
+      "model": "shohrux123",
+      "category": "samsung",
       "retail_price": "123",
-      "release_date": "2024-03-05",
+      "release_date": "2024-03-27",
+      "description": "432233",
+      "created_date": "2024-03-17",
+      "is_visible": false
+    },
+    {
+      "id": "cc8f",
+      "model": "123",
+      "category": "iphone",
+      "retail_price": null,
+      "release_date": "2024-03-11",
+      "description": null,
+      "created_date": "2024-03-17",
+      "is_visible": false
+    },
+    {
+      "id": "d369",
+      "model": null,
+      "category": "samsung",
+      "retail_price": "213",
+      "release_date": "2024-03-18",
       "description": "123",
-      "created_date": "2024-03-16",
+      "created_date": "2024-03-17",
+      "is_visible": false
+    },
+    {
+      "id": "40b2",
+      "model": "123233",
+      "category": "samsung",
+      "retail_price": "213",
+      "release_date": "2024-03-18",
+      "description": "123",
+      "created_date": "2024-03-17",
+      "is_visible": false
+    },
+    {
+      "id": "fadf",
+      "model": "1232",
+      "category": "samsung",
+      "retail_price": "123",
+      "release_date": "2024-03-18",
+      "description": "123",
+      "created_date": "2024-03-17",
       "is_visible": false
     }
   ]

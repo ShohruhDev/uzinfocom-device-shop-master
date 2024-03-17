@@ -1,18 +1,12 @@
 <template>
   <div class="filter">
-    <el-input
-      placeholder="Поиск по модели"
-      v-model="filterModel"
-      clearable
-      @clear="handleFilterChange"
-      style="margin-bottom: 20px"
-    />
+    <el-input placeholder="Поиск по модели" v-model="filterModel" clearable @clear="handleFilterChange" />
     <el-select
       v-model="filterCategory"
       placeholder="Выберите категорию"
       @change="handleFilterChange"
       clearable
-      style="margin-bottom: 20px; margin-left: 20px"
+      style="margin-left: 20px"
     >
       <el-option v-for="category in categories" :key="category.value" :label="category.label" :value="category.value" />
     </el-select>
@@ -31,7 +25,7 @@
       </el-table-column>
       <el-table-column>
         <template #default="{ row }">
-          <el-button type="primary" :icon="Edit" circle />
+          <el-button type="primary" @click="openEditModal(row)" :icon="Edit" circle />
           <el-popconfirm
             title="Вы уверены удалить это?"
             width="220"
@@ -39,7 +33,7 @@
             cancel-button-text="Нет"
             :icon="InfoFilled"
             icon-color="#626AEF"
-            @confirm="deleteGood(row.id).then(() => fetchGoods())"
+            @confirm="removeGood(row.id)"
           >
             <template #reference>
               <el-button type="danger" :icon="Delete" circle />
@@ -58,19 +52,25 @@
       />
     </div>
   </div>
+  <GoodsCreateModal v-model="modal.isOpen" :edit-data="modal.data" :mode="'edit'" @update:modelValue="fetchGoods()" />
 </template>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue';
+  import { onMounted, reactive, ref, watch } from 'vue';
   import { debounce } from 'lodash-es';
   import { getGoodsList, updateGood, deleteGood } from '../services/goods';
   import { Delete, Edit, InfoFilled } from '@element-plus/icons-vue';
+  import GoodsCreateModal from './GoodsCreateModal.vue';
 
   const goodsData = ref([]);
   const currentPage = ref(1);
   const totalItems = ref(0);
   const filterModel = ref('');
   const filterCategory = ref('');
+  const modal = reactive({
+    isOpen: false,
+    data: null,
+  });
   const categories = ref([
     { value: 'iphone', label: 'iphone' },
     { value: 'samsung', label: 'samsung' },
@@ -82,7 +82,16 @@
       totalItems.value = res.data.items;
     });
   };
-
+  const removeGood = id => {
+    deleteGood(id).then(() => {
+      fetchGoods();
+      ElMessage({
+        showClose: true,
+        message: 'Товар успешно удален',
+        type: 'success',
+      });
+    });
+  };
   const handlePageChange = newPage => {
     currentPage.value = newPage;
     fetchGoods();
@@ -103,12 +112,20 @@
     updateGood(id, payload);
   };
 
-  fetchGoods();
+  const openEditModal = val => {
+    modal.isOpen = true;
+    modal.data = val;
+    console.log(val);
+  };
+
+  onMounted(() => {
+    fetchGoods();
+  });
 </script>
 <style lang="scss">
   .filter {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
   .table {
     margin: 20px;

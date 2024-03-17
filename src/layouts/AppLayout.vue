@@ -7,19 +7,24 @@
     </template>
     <template #extra>
       <div class="header_btn">
-        <el-button plain @click="isModalOpen = true" type="primary">Primary</el-button>
+        <el-button plain @click="openModal" type="primary">Создать товар</el-button>
       </div>
     </template>
   </el-page-header>
   <div>
     <router-view />
   </div>
-  <GoodsCreateModal v-model:model-value="isModalOpen" />
+  <GoodsCreateModal v-model="isModalOpen" :mode="'create'" @update:modelValue="getGoodsList()" />
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
   import GoodsCreateModal from '../components/GoodsCreateModal.vue';
+  import { getGoodsList } from '../services/goods';
+
   const isModalOpen = ref(false);
+  const openModal = () => {
+    isModalOpen.value = true;
+  };
 </script>
 <style lang="scss">
   .header_title {

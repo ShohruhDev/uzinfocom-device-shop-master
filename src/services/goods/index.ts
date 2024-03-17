@@ -1,4 +1,4 @@
-import MainConnect from '../index.js';
+import MainConnect from '../index.ts';
 
 export const getGoodsList = (page: number, model: string = '', category: string = '') => {
   return MainConnect.get(`/goods?_page=${page}&model=${model}&category=${category}`);
