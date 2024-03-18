@@ -5,7 +5,11 @@ module.exports = {
     },
     "extends": [
         "standard-with-typescript",
-        "plugin:vue/vue3-essential"
+        "plugin:vue/vue3-essential",
+        "eslint:recommended",
+        'plugin:vue/vue3-essential',
+        '@vue/typescript/recommended',
+        'plugin:prettier/recommended',
     ],
     "overrides": [
         {
@@ -25,8 +29,10 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "vue"
+        "vue",
     ],
     "rules": {
-    }
+    },
+     "parser": "@typescript-eslint/parser",
+        
 }

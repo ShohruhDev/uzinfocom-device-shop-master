@@ -58,16 +58,18 @@
 <script setup lang="ts">
   import { onMounted, reactive, ref, watch } from 'vue';
   import { debounce } from 'lodash-es';
-  import { getGoodsList, updateGood, deleteGood } from '~/services/goods';
+  import { getGoodsList, updateGood, deleteGood } from '../services/goods';
   import { Delete, Edit, InfoFilled } from '@element-plus/icons-vue';
   import GoodsCreateModal from './GoodsCreateModal.vue';
+  import { GoodEntity } from '../types/types';
+  import { ElMessage } from 'element-plus';
   interface Modal {
     isOpen: boolean;
-    data: object;
+    data: GoodEntity | null;
   }
-  const goodsData = ref([]);
-  const currentPage = ref<number | string>(1);
-  const totalItems = ref<number | string>(0);
+  const goodsData = ref<GoodEntity[]>([]);
+  const currentPage = ref<number>(1);
+  const totalItems = ref<number>(0);
   const filterModel = ref<string>('');
   const filterCategory = ref<string>('');
   const modal: Modal = reactive({
@@ -79,8 +81,14 @@
     { value: 'samsung', label: 'samsung' },
   ];
 
+  interface GoodsListResponse {
+  data: {
+    data: GoodEntity[]; 
+    items: number; 
+  };
+}
   const fetchGoods = () => {
-    getGoodsList(currentPage.value, filterModel.value, filterCategory.value).then(res => {
+    getGoodsList(currentPage.value, filterModel.value, filterCategory.value).then((res: GoodsListResponse) => {
       goodsData.value = res.data.data;
       totalItems.value = res.data.items;
     });
@@ -95,7 +103,7 @@
       });
     });
   };
-  const handlePageChange = (newPage: number | string) => {
+  const handlePageChange = (newPage: number) => {
     currentPage.value = newPage;
     fetchGoods();
   };
@@ -111,11 +119,11 @@
     debouncedGetGoods();
   });
 
-  const updateGoodVisibility = (id: string | number, payload: object) => {
+  const updateGoodVisibility = (id: string | number, payload: GoodEntity) => {
     updateGood(id, payload);
   };
 
-  const openEditModal = (val: object) => {
+  const openEditModal = (val: GoodEntity) => {
     modal.isOpen = true;
     modal.data = val;
   };

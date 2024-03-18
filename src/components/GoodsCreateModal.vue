@@ -52,16 +52,19 @@
 
 <script setup lang="ts">
   import { watch, ref } from 'vue';
-  import { createGood, updateGood } from '~/services/goods';
+  import { createGood, updateGood } from '../services/goods';
   import { formatDate } from 'date-fns';
   import { useForm, useField } from 'vee-validate';
   import * as yup from 'yup';
-  import { GoodEntity } from '@/types/types.ts';
+  import { GoodEntity } from '../types/types';
+  import { ElMessage } from 'element-plus';
 
   type EmitTypes = {
-    (event: 'update:model-value', value: boolean): void;
-  };
-  const emit = defineEmits<EmitTypes>();
+  (event: 'update:model-value', value: boolean): void;
+};
+
+const emit: EmitTypes = defineEmits<EmitTypes>();
+
   interface Props {
     modelValue: boolean;
     editData?: { [key: string]: any } | null;
@@ -94,7 +97,7 @@
 
   const onSubmit = handleSubmit(values => {
     const { model, realizeDate, category, retailPrice, description, isVisible } = values;
-    const params: GoodEntity = {
+    const params = {
       model: model,
       category: category,
       retail_price: retailPrice,
@@ -124,6 +127,7 @@
       description: description,
       created_date: formatDate(new Date(), 'yyyy-MM-dd'),
       is_visible: isVisible,
+      id: goodId.value
     };
 
     updateGood(goodId.value, payload).then(() => {
@@ -135,13 +139,13 @@
       });
     });
   });
-  const { value: model, setValue: setModel } = useField('model');
-  const { value: releaseDate, setValue: setReleaseDate } = useField('realizeDate');
-  const { value: category, setValue: setCategory } = useField('category');
-  const { value: retailPrice, setValue: setRetailPrice } = useField('retailPrice');
-  const { value: description, setValue: setDescription } = useField('description');
-  const { value: isVisible, setValue: setIsVisible } = useField('isVisible');
-  const goodId = ref(null);
+  const { value: model, setValue: setModel } = useField<string>('model');
+  const { value: releaseDate, setValue: setReleaseDate } = useField<string>('realizeDate');
+  const { value: category, setValue: setCategory } = useField<string>('category');
+  const { value: retailPrice, setValue: setRetailPrice } = useField<string>('retailPrice');
+  const { value: description, setValue: setDescription } = useField<string>('description');
+  const { value: isVisible, setValue: setIsVisible } = useField<boolean>('isVisible');
+  const goodId = ref<string | number>('');
   watch(
     () => props.editData,
     newVal => {
