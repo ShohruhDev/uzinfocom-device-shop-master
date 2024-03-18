@@ -52,7 +52,7 @@
       />
     </div>
   </div>
-  <GoodsCreateModal v-model="modal.isOpen" :edit-data="modal.data" :mode="'edit'" @update:modelValue="fetchGoods()" />
+  <GoodsCreateModal v-model="modal.isOpen" :edit-data="modal.data" :mode="'edit'" @success="fetchGoods()" />
 </template>
 
 <script setup lang="ts">

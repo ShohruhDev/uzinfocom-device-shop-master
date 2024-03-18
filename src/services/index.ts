@@ -1,5 +1,5 @@
 import axios from 'axios'
-const BASE_URL = process.env.VUE_APP_BACKEND_API;
+const BASE_URL = import.meta.env.VITE_BACKEND_API;;
 
 const MainConnect = axios.create({
   baseURL: BASE_URL,

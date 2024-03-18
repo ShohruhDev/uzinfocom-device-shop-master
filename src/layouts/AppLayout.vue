@@ -14,7 +14,7 @@
   <div>
     <router-view />
   </div>
-  <GoodsCreateModal v-model="isModalOpen" :mode="'create'" @update:modelValue="getGoodsList()" />
+  <GoodsCreateModal v-model="isModalOpen" :mode="'create'" @success="getGoodsList()" />
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';

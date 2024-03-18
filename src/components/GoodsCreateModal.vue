@@ -11,8 +11,8 @@
         <el-input v-model="model" />
       </el-form-item>
       <div class="form-item">
-        <el-form-item label="Дата релиза" :error="errors.releaseDate">
-          <el-date-picker v-model="releaseDate" />
+        <el-form-item label="Дата релиза" :error="errors.realizeDate">
+          <el-date-picker v-model="realizeDate" />
         </el-form-item>
         <el-form-item
           class="form-item__checkbox"
@@ -61,6 +61,7 @@
 
   type EmitTypes = {
   (event: 'update:model-value', value: boolean): void;
+  (event: 'success'): void;
 };
 
 const emit: EmitTypes = defineEmits<EmitTypes>();
@@ -108,6 +109,7 @@ const emit: EmitTypes = defineEmits<EmitTypes>();
     };
     createGood(params).then(() => {
       emit('update:model-value', false);
+      emit('success');
       ElMessage({
         showClose: true,
         message: 'Товар успешно создан',
@@ -132,6 +134,7 @@ const emit: EmitTypes = defineEmits<EmitTypes>();
 
     updateGood(goodId.value, payload).then(() => {
       emit('update:model-value', false);
+      emit('success');
       ElMessage({
         showClose: true,
         message: 'Товар успешно обновлен',
@@ -140,7 +143,7 @@ const emit: EmitTypes = defineEmits<EmitTypes>();
     });
   });
   const { value: model, setValue: setModel } = useField<string>('model');
-  const { value: releaseDate, setValue: setReleaseDate } = useField<string>('realizeDate');
+  const { value: realizeDate, setValue: setRealizeDate } = useField<string>('realizeDate');
   const { value: category, setValue: setCategory } = useField<string>('category');
   const { value: retailPrice, setValue: setRetailPrice } = useField<string>('retailPrice');
   const { value: description, setValue: setDescription } = useField<string>('description');
@@ -151,7 +154,7 @@ const emit: EmitTypes = defineEmits<EmitTypes>();
     newVal => {
       if (props.mode === 'edit' && newVal) {
         setModel(newVal.model || '');
-        setReleaseDate(newVal.release_date || '');
+        setRealizeDate(newVal.release_date || '');
         setCategory(newVal.category || '');
         setRetailPrice(newVal.retail_price || '');
         setDescription(newVal.description || '');
@@ -163,7 +166,7 @@ const emit: EmitTypes = defineEmits<EmitTypes>();
   );
   const resetFormFields = () => {
   setModel('');
-  setReleaseDate('');
+  setRealizeDate('');
   setCategory('');
   setRetailPrice('');
   setDescription('');
