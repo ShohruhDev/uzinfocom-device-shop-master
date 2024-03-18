@@ -42,7 +42,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <div class="table_pagination">
+    <div v-if="totalItems > 10" class="table_pagination">
       <el-pagination
         background
         layout="prev, pager, next"
