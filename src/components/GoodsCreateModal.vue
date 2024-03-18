@@ -161,6 +161,20 @@ const emit: EmitTypes = defineEmits<EmitTypes>();
     },
     { immediate: true }
   );
+  const resetFormFields = () => {
+  setModel('');
+  setReleaseDate('');
+  setCategory('');
+  setRetailPrice('');
+  setDescription('');
+  setIsVisible(false);
+  goodId.value = '';
+}
+  watch(() => props.modelValue, (newVal) => {
+  if (!newVal) {
+    resetFormFields();
+  }
+});
 </script>
 
 <style lang="scss" scoped>

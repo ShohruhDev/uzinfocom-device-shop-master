@@ -6,7 +6,7 @@
       </div>
     </template>
     <template #extra>
-      <div class="header_btn">
+      <div>
         <el-button plain @click="openModal" type="primary">Создать товар</el-button>
       </div>
     </template>
@@ -18,8 +18,8 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import GoodsCreateModal from '~/components/GoodsCreateModal.vue';
-  import { getGoodsList } from '~/services/goods';
+  import GoodsCreateModal from '../components/GoodsCreateModal.vue';
+  import { getGoodsList } from '../services/goods';
 
   const isModalOpen = ref<boolean>(false);
   const openModal = (): void => {
@@ -29,7 +29,5 @@
 <style lang="scss">
   .header_title {
     color: #409eff;
-  }
-  .header_btn {
   }
 </style>
